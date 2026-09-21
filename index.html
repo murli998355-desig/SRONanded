@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Statistical Office (NSO) SRO Nanded | MoSPI</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & FontAwesome Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            govNavy: '#071829',
+            govDeep: '#0c243c',
+            govBlue: '#133e68',
+            govGold: '#f59e0b',
+            govSaffron: '#ff7722',
+            govGreen: '#059669'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Luxury Styling */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .dark-glass {
+      background: rgba(12, 36, 60, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .tricolor-glow {
+      height: 4px;
+      background: linear-gradient(90deg, #ff7722 0%, #ff7722 35%, #ffffff 35%, #ffffff 65%, #059669 65%, #059669 100%);
+      box-shadow: 0 1px 8px rgba(255, 119, 34, 0.25);
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .ticker-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: tickerScroll 30s linear infinite;
+    }
+    .ticker-paused {
+      animation-play-state: paused !important;
+    }
+    .luxury-gradient {
+      background: radial-gradient(circle at top left, #123659, #071829 70%);
+    }
+  </style>
+</head>
+<body class="bg-[#f3f6f9] text-slate-800 font-sans antialiased selection:bg-amber-400 selection:text-slate-950 min-h-screen flex flex-col">
+
+  <!-- ================= 1. ADMIN LOGGED FLOATING NOTIFICATION ================= -->
+  <div id="adminTopBar" class="hidden bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 px-4 py-2 text-xs font-bold flex justify-between items-center z-50 sticky top-0 shadow-lg border-b border-amber-600">
+    <div class="flex items-center space-x-2.5 max-w-7xl mx-auto w-full justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+        <span class="tracking-wide"><i class="fa-solid fa-lock-open mr-1"></i> Admin Portal Active: Aap Staff Details, Photos, Events aur Documents add/edit kar sakte hain.</span>
+      </div>
+      <button onclick="logoutAdmin()" class="bg-slate-950 hover:bg-slate-800 text-white px-3 py-1 rounded-md text-[11px] font-bold shadow transition">
+        Logout Admin
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= 2. OFFICIAL TOP HEADER (NON-EDITABLE BRANDING) ================= -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 transition-all shadow-xs">
+    
+    <!-- GIGW Utility Strip -->
+    <div class="bg-slate-900 text-slate-300 text-[11px] py-1 px-4 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-orange-500 mr-1.5"></span> भारत सरकार | Government of India</span>
+          <span class="text-slate-600">|</span>
+          <span class="hidden sm:inline font-medium text-slate-300">सांख्यिकी और कार्यक्रम कार्यान्वयन मंत्रालय</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button onclick="promptAdminLogin()" class="hover:text-amber-400 font-bold flex items-center space-x-1 transition text-amber-300" title="Admin Portal">
+            <i class="fa-solid fa-shield-cat"></i>
+            <span>Admin Access</span>
+          </button>
+          <span class="text-slate-600">|</span>
+          <span class="hover:text-white cursor-pointer">अ / A</span>
+          <span class="text-slate-600">|</span>
+          <div class="flex space-x-1.5 font-mono text-[10px]">
+            <span class="cursor-pointer hover:text-white">A-</span>
+            <span class="cursor-pointer font-bold text-white">A</span>
+            <span class="cursor-pointer hover:text-white">A+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Branding Row -->
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      
+      <!-- Left: Emblem + Titles -->
+      <div class="flex items-center space-x-4">
+        <!-- Ashok Stambh Vector -->
+        <div class="w-12 h-14 flex-shrink-0 flex items-center justify-center">
+          <svg viewBox="0 0 100 120" class="w-full h-full drop-shadow-sm" fill="#0f172a">
+            <path d="M50,4 C42,4 37,10 37,16 C37,22 42,26 44,30 C38,32 32,38 32,48 C32,58 38,66 45,68 L45,82 L26,82 C26,85 28,89 50,89 C72,89 74,85 74,82 L55,82 L55,68 C62,66 68,58 68,48 C68,38 62,32 56,30 C58,26 63,22 63,16 C63,10 58,4 50,4 Z" />
+            <circle cx="50" cy="94" r="6" stroke="#0f172a" stroke-width="1.5" fill="none" />
+            <text x="50" y="112" font-size="10" font-family="serif" font-weight="bold" text-anchor="middle" fill="#0f172a">सत्यमेव जयते</text>
+          </svg>
+        </div>
+
+        <div class="border-l-2 pl-4 border-slate-200">
+          <p class="text-[11px] text-slate-500 font-semibold tracking-wider uppercase">Government Of India</p>
+          <h1 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight leading-tight">
+            Ministry of Statistics and Programme Implementation
+          </h1>
+          <div class="flex items-center space-x-2 mt-0.5">
+            <span class="bg-govBlue text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
+              NSO • FOD
+            </span>
+            <span class="text-xs font-bold text-govBlue tracking-tight">
+              उप-क्षेत्रीय कार्यालय, नांदेड़ | Sub-Regional Office Nanded
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Official Campaign Logos -->
+      <div class="flex items-center space-x-4 sm:space-x-6">
+        
+        <!-- Logo 1: Viksit Bharat -->
+        <div class="flex flex-col items-center text-center group cursor-pointer">
+          <div class="w-10 h-10 rounded-full border-2 border-dashed border-blue-900 flex items-center justify-center p-0.5 shadow-sm group-hover:scale-105 transition">
+            <div class="w-full h-full rounded-full bg-gradient-to-tr from-orange-500 via-white to-green-600 flex items-center justify-center">
+              <i class="fa-solid fa-dharmachakra text-blue-900 text-sm animate-spin" style="animation-duration: 25s;"></i>
+            </div>
+          </div>
+          <span class="text-[8px] font-bold text-slate-700 mt-0.5">विकसित भारत @2047</span>
+        </div>
+
+        <!-- Logo 2: Swachh Bharat -->
+        <div class="flex flex-col items-center text-center group cursor-pointer">
+          <div class="w-14 h-7 border border-slate-700 rounded-full flex items-center justify-around px-1 bg-white shadow-xs group-hover:scale-105 transition">
+            <div class="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center text-[7px] font-bold text-slate-800">स्वच्छ</div>
+            <div class="w-1.5 h-0.5 bg-slate-700"></div>
+            <div class="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center text-[7px] font-bold text-slate-800">भारत</div>
+          </div>
+          <span class="text-[8px] font-bold text-slate-600 mt-0.5">एक कदम स्वच्छता की ओर</span>
+        </div>
+
+        <!-- Logo 3: Stay Safe Online -->
+        <div class="flex flex-col items-center text-center group cursor-pointer">
+          <div class="w-10 h-9 rounded-md bg-blue-50 border border-blue-200 flex flex-col items-center justify-center text-blue-900 shadow-xs relative group-hover:scale-105 transition">
+            <i class="fa-solid fa-shield-halved text-sm"></i>
+            <i class="fa-solid fa-wifi text-[8px] absolute top-1 right-1 text-cyan-600"></i>
+          </div>
+          <span class="text-[8px] font-bold text-slate-700 mt-0.5">STAY SAFE ONLINE</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Tricolor Flag Line -->
+    <div class="tricolor-glow"></div>
+  </header>
+
+  <!-- ================= 3. ANNOUNCEMENT TICKER ================= -->
+  <div class="bg-govDeep text-white py-2 px-4 shadow-sm border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center overflow-hidden flex-1 mr-4">
+        <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 text-[11px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider flex items-center mr-3 whitespace-nowrap shadow-sm">
+          <i class="fa-solid fa-bullhorn mr-1.5 animate-pulse"></i> Flash Updates
+        </span>
+        <div class="overflow-hidden relative w-full text-xs font-medium text-slate-200">
+          <div id="tickerTrack" class="ticker-track space-x-10">
+            <span><i class="fa-solid fa-circle-check text-green-400 mr-1.5"></i> MoSPI: Periodic Labour Force Survey (PLFS) Monthly Bulletin released & active</span>
+            <span><i class="fa-solid fa-tablet text-blue-300 mr-1.5"></i> SRO Nanded: CAPI Tablet System 100% operational in Nanded, Parbhani & Hingoli</span>
+            <span><i class="fa-solid fa-chart-pie text-amber-300 mr-1.5"></i> Annual Survey of Unincorporated Sector Enterprises (ASUSE) data scrutiny in progress</span>
+            <span><i class="fa-solid fa-file-pdf text-red-400 mr-1.5"></i> Instructions to Field Staff (SS/SE) for current survey rounds updated in Documents section</span>
+          </div>
+        </div>
+      </div>
+      <button onclick="toggleTicker()" class="text-slate-300 hover:text-amber-400 px-2 py-0.5 border border-slate-700 rounded text-xs font-mono font-bold transition" title="Play/Pause">
+        <span id="tickerBtn">00</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= 4. LUXURY NAVIGATION BAR (TABS) ================= -->
+  <nav class="bg-govNavy text-white shadow-xl sticky top-[77px] z-30 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between">
+      <div class="flex flex-wrap text-xs md:text-sm font-semibold">
+        
+        <button onclick="switchTab('home')" id="tab-nav-home" class="tab-btn py-3.5 px-4 border-b-2 border-amber-400 text-amber-400 bg-white/10 flex items-center transition">
+          <i class="fa-solid fa-house mr-2 text-amber-400"></i> मुख्य पृष्ठ (Home)
+        </button>
+
+        <button onclick="switchTab('about')" id="tab-nav-about" class="tab-btn py-3.5 px-4 border-b-2 border-transparent text-slate-300 hover:text-white hover:bg-white/5 flex items-center transition">
+          <i class="fa-solid fa-landmark mr-2"></i> संगठन परिचय (About Us)
+        </button>
+
+        <button onclick="switchTab('permanent')" id="tab-nav-permanent" class="tab-btn py-3.5 px-4 border-b-2 border-transparent text-slate-300 hover:text-white hover:bg-white/5 flex items-center transition">
+          <i class="fa-solid fa-user-tie mr-2"></i> नियमित संवर्ग (Permanent Staff)
+        </button>
+
+        <button onclick="switchTab('contractual')" id="tab-nav-contractual" class="tab-btn py-3.5 px-4 border-b-2 border-transparent text-slate-300 hover:text-white hover:bg-white/5 flex items-center transition">
+          <i class="fa-solid fa-clipboard-user mr-2"></i> संविदा कार्मिक (Contractual Staff)
+        </button>
+
+        <button onclick="switchTab('events')" id="tab-nav-events" class="tab-btn py-3.5 px-4 border-b-2 border-transparent text-slate-300 hover:text-white hover:bg-white/5 flex items-center transition">
+          <i class="fa-solid fa-photo-film mr-2"></i> इवेंट गैलरी एवं दस्तावेज़ (Events & Docs)
+        </button>
+
+        <button onclick="switchTab('contact')" id="tab-nav-contact" class="tab-btn py-3.5 px-4 border-b-2 border-transparent text-slate-300 hover:text-white hover:bg-white/5 flex items-center transition">
+          <i class="fa-solid fa-headset mr-2"></i> संपर्क (Contact Us)
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= 5. MAIN TAB CONTENT AREA ================= -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
+
+    <!-- ================= TAB 1: HOME (EVENTS PICTURE FRONT & CENTER) ================= -->
+    <div id="tab-content-home" class="tab-view block space-y-8">
+      
+      <!-- HERO SPLIT SECTION: LEFT IS MISSION & MOSPI KPIS, RIGHT IS GRAND EVENTS CAROUSEL -->
+      <section class="luxury-gradient rounded-3xl p-6 sm:p-8 text-white shadow-2xl border border-slate-800 relative overflow-hidden">
+        
+        <!-- Decorative Glow Elements -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <!-- Left Column (5 Cols): Title, Info & Quick Highlights -->
+          <div class="lg:col-span-5 space-y-5">
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 text-xs text-amber-300 font-semibold shadow-inner">
+              <i class="fa-solid fa-shield-halved text-amber-400"></i>
+              <span>National Statistical System • NSO Nanded</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+              Shaping India's Future with <span class="bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200 bg-clip-text text-transparent">Data-Driven</span> Governance
+            </h2>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              उप-क्षेत्रीय कार्यालय नांदेड़ द्वारा आवधिक श्रम बल सर्वेक्षण (PLFS), ASUSE, CPI एवं UFS के उच्च परिशुद्धता वाले सामाजिक-आर्थिक आंकड़ों का डिजिटल फील्ड संकलन।
+            </p>
+
+            <!-- Search Bar Inside Hero -->
+            <div class="pt-2">
+              <div class="relative bg-white/10 backdrop-blur-lg rounded-2xl p-1.5 border border-white/20 flex items-center shadow-lg focus-within:ring-2 focus-within:ring-amber-400">
+                <i class="fa-solid fa-magnifying-glass text-slate-400 ml-3 mr-2 text-sm"></i>
+                <input type="text" placeholder="Statistical Reports, PLFS, ASUSE, CPI..." class="w-full bg-transparent text-xs text-white placeholder-slate-400 focus:outline-none py-2">
+                <button class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-extrabold px-4 py-2 rounded-xl text-xs shadow transition">
+                  Search
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-2.5 text-[11px] text-slate-300">
+                <span class="text-slate-400">Quick:</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded cursor-pointer hover:bg-white/20">PLFS</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded cursor-pointer hover:bg-white/20">ASUSE</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded cursor-pointer hover:bg-white/20">CPI Price</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded cursor-pointer hover:bg-white/20">UFS Map</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (7 Cols): GRAND PROMINENT EVENTS CAROUSEL (FRONT & CENTER) -->
+          <div class="lg:col-span-7">
+            <div class="bg-slate-900/80 p-2 sm:p-3 rounded-2xl border border-white/15 shadow-2xl relative group">
+              
+              <!-- Carousel Frame -->
+              <div class="relative rounded-xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] bg-slate-950">
+                
+                <!-- Dynamic Slides Container -->
+                <div id="homeSlidesWrapper" class="w-full h-full relative">
+                  <!-- Rendered by JS with Ultra-HD Photos -->
+                </div>
+
+                <!-- Gradient Vignette Overlay for Crisp Text -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
+
+                <!-- Top Floating Event Tag -->
+                <div class="absolute top-3 left-3 z-20 flex items-center space-x-2">
+                  <span class="bg-govSaffron text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider shadow flex items-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping mr-1.5"></span> LIVE FIELD ACTIVITIES
+                  </span>
+                  <span class="bg-black/50 backdrop-blur text-white text-[10px] px-2.5 py-1 rounded-md border border-white/20 font-mono" id="slideCounter">
+                    01 / 03
+                  </span>
+                </div>
+
+                <!-- Admin Add Photo Trigger in Top Right -->
+                <div class="absolute top-3 right-3 z-20 admin-action hidden">
+                  <button onclick="openUploadPhotoModal()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold px-3 py-1 rounded-md shadow flex items-center transition">
+                    <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> + Add Photo
+                  </button>
+                </div>
+
+                <!-- Bottom Glassmorphic Caption Card -->
+                <div class="absolute bottom-3 left-3 right-3 z-20 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/15">
+                  <h4 class="text-sm sm:text-base font-bold text-white truncate" id="homeSlideTitle">Loading...</h4>
+                  <p class="text-xs text-slate-300 mt-1 line-clamp-2" id="homeSlideDesc">Loading description...</p>
+                </div>
+
+                <!-- Arrow Navigation Controls -->
+                <button onclick="prevHomeSlide()" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-amber-400 hover:text-slate-950 text-white flex items-center justify-center backdrop-blur text-xs z-20 transition border border-white/20 shadow-lg">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="nextHomeSlide()" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-amber-400 hover:text-slate-950 text-white flex items-center justify-center backdrop-blur text-xs z-20 transition border border-white/20 shadow-lg">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+              </div>
+
+              <!-- Carousel Progress / Dots Bar -->
+              <div class="flex items-center justify-between px-2 pt-3 text-xs text-slate-400">
+                <span class="text-[11px] font-medium"><i class="fa-solid fa-camera mr-1 text-amber-400"></i> Sub-Regional Office Nanded Events Showcase</span>
+                <div id="homeSlideDots" class="flex space-x-1.5">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
